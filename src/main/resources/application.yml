@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1/hmms?useSSL=false
+    username: root
+    password: 99.99
+    driver-class-name: org.gjt.mm.mysql.Driver
+
+
+ # mybatis配置
+mybatis:
+  # 配置映射类所在包名
+  type-aliases-package: com.example.demo.bean
+  # 配置mapper xml文件所在路径，这里是一个数组
+  mapper-locations: mapper/*.xml
