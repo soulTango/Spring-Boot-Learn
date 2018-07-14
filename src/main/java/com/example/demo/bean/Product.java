@@ -1,9 +1,12 @@
 package com.example.demo.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by user on 2018/7/10.
  */
-public class Product {
+public class Product implements Serializable{
+    private static final long serialVersionUID = 1435515995276255188L;
     private long id;
     private String name;
     private long price;

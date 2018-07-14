@@ -2,8 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.ProductMapper">
-    <select id="select" resultType="com.example.demo.bean.Product">
-        select * from product where id = '1'
+<mapper namespace="com.example.demo.dao.ProductMapper">
+    <!-- 开启基于redis的二级缓存 -->
+    <cache type="com.example.demo.redis.RedisCache"/>
+    <select id="select" resultType="com.example.demo.bean.Product" parameterType="java.lang.Long">
+        select * from product where id = #{id}
     </select>
+    <update id="update" parameterType="com.example.demo.bean.Product" flushCache="true">
+        update product set name = #{name} , price = #{price} where id = #{id}
+    </update>
 </mapper>
