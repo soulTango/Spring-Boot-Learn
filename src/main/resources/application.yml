@@ -12,6 +12,12 @@ spring:
         min-idle: 0
         max-wait: -1
 
+bookAell:
+  name: chinese111
+  author: mark
+
+
+
 ---
 spring:
   redis:
@@ -35,6 +41,17 @@ spring:
 #      min-idle: 0
       # 从连接池中获取连接最大等待时间（默认为-1，单位为毫秒，负数表示无限）
 #      max-wait: -1
+---
+spring:
+  profiles: test
+ # 数据库配置
+  datasource:
+    url: jdbc:h2:mem:test
+    username: root
+    password: 123456
+    driver-class-name: org.h2.Driver
+    schema: classpath:schema.sql
+    data: classpath:data.sql
 
 
 
@@ -51,14 +68,5 @@ mybatis:
   # 配置mapper xml文件所在路径，这里是一个数组
   mapper-locations: mapper/*.xml
 
----
-spring:
-  profiles: test
- # 数据库配置
-  datasource:
-    url: jdbc:h2:mem:test
-    username: root
-    password: 123456
-    driver-class-name: org.h2.Driver
-    schema: classpath:schema.sql
-    data: classpath:data.sql
+
+
